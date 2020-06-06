@@ -8,7 +8,11 @@ users.get('/', async (ctx, next) => {
 	const users = await db.user.findAll()
 
 	ctx.body = {
-		data: users
+		data: users.map(u => ({
+			id: u.id,
+			first_name: u.first_name,
+			last_name: u.last_name
+		}))
 	}
 	await next()
 })
@@ -17,7 +21,11 @@ users.get('/:id', async (ctx, next) => {
 	const user = await db.user.findById(ctx.params.id)
 
 	ctx.body = {
-		data: user
+		data: {
+			id: user.id,
+			first_name: user.first_name,
+			last_name: user.last_name
+		}
 	}
 	await next()
 })
