@@ -9,16 +9,16 @@ const sequelize = new Sequelize({
 
 const db = {
 	__modelNames: [
-		'User',
-		'Category',
-		'MicroChat',
-		'Message'
+		'user',
+		'category',
+		'microchat',
+		'message'
 	]
 }
 
 db.__modelNames.forEach(name => {
 	const model = sequelize['import'](path.join(__dirname, name))
-	db[name.toLowerCase()] = model
+	db[name] = model
 })
 
 Object.keys(db).forEach(modelName => {

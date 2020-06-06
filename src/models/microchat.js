@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-	const model = sequelize.define('MicroChat', {
+	const model = sequelize.define('microchat', {
 		id: {
 			primaryKey: true,
 			type: DataTypes.STRING
