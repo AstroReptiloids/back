@@ -7,21 +7,27 @@ const messages = new Router()
 messages.get('/', async (ctx, next) => {
 	const messages = await db.message.findAll()
 
-	ctx.body = messages
+	ctx.body = {
+		data: messages
+	}
 	await next()
 })
 
 messages.get('/:id', async (ctx, next) => {
 	const message = await db.message.findById(ctx.params.id)
 
-	ctx.body = message
+	ctx.body = {
+		data: message
+	}
 	await next()
 })
 
 messages.post('/', async (ctx, next) => {
 	const message = await db.message.create(ctx.request.body)
 
-	ctx.body = message
+	ctx.body = {
+		data: message
+	}
 	await next()
 })
 
@@ -29,7 +35,9 @@ messages.patch('/:id', async (ctx, next) => {
 	const message = await db.message.findById(ctx.params.id)
 	const updatedMessage = await message.update(ctx.request.body)
 
-	ctx.body = updatedMessage
+	ctx.body = {
+		data: updatedMessage
+	}
 	await next()
 })
 
@@ -37,7 +45,9 @@ messages.delete('/:id', async (ctx, next) => {
 	const message = await db.message.findById(ctx.params.id)
 	const deletedMessage = await message.destroy()
 
-	ctx.body = deletedMessage
+	ctx.body = {
+		data: deletedMessage
+	}
 	await next()
 })
 

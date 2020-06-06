@@ -9,7 +9,11 @@ auth.get('/login', async (ctx, next) => {
 	const where = createWhereArray(ctx.request.query, ['owner_id', 'feeder_id'])
 	const user = await db.user.findOne({ where: db.Sequelize.and(...where) })
 
-	ctx.body = user
+	ctx.body = {
+		data: {
+			token: user.token
+		}
+	}
 	await next()
 })
 

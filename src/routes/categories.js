@@ -7,14 +7,18 @@ const categories = new Router()
 categories.get('/', async (ctx, next) => {
 	const categories = await db.category.findAll()
 
-	ctx.body = categories
+	ctx.body = {
+		data: categories
+	}
 	await next()
 })
 
 categories.get('/:id', async (ctx, next) => {
 	const category = await db.category.findById(ctx.params.id)
 
-	ctx.body = category
+	ctx.body = {
+		data: category
+	}
 	await next()
 })
 
