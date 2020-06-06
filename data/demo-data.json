@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": "abc1",
+      "first_name": "Ivan",
+      "last_name": "Ivanov",
+      "login": "ivan",
+      "password": "qwe",
+      "token": "ivan-qwe"
+    },
+    {
+      "id": "abc2",
+      "first_name": "Petr",
+      "last_name": "Petrov",
+      "login": "petr",
+      "password": "asd",
+      "token": "petr-asd"
+    }
+  ]
+}
