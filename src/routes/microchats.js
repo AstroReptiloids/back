@@ -26,7 +26,11 @@ microchats.get('/', async (ctx, next) => {
 		if (creators[m.user_id]) {
 			return
 		}
-		creators[m.creator_id] = await db.user.findByPk(m.creator_id)
+		const creator = await db.user.findByPk(m.creator_id)
+		creators[m.creator_id] = {
+			first_name: creator.first_name,
+			last_name: creator.last_name
+		}
 	}))
 
 	ctx.body = {

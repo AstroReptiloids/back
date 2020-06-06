@@ -21,7 +21,11 @@ messages.get('/', async (ctx, next) => {
 		if (users[m.user_id]) {
 			return
 		}
-		users[m.user_id] = await db.user.findByPk(m.user_id)
+		const user = await db.user.findByPk(m.user_id)
+		users[m.user_id] = {
+			first_name: user.first_name,
+			last_name: user.last_name
+		}
 	}))
 
 	ctx.body = {
