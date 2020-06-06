@@ -1,6 +1,5 @@
 export default (sequelize, DataTypes) => {
-
-	const User = sequelize.define('user', {
+	const model = sequelize.define('user', {
 		id: {
 			primaryKey: true,
 			type: DataTypes.STRING
@@ -20,7 +19,7 @@ export default (sequelize, DataTypes) => {
 		token: {
 			type: DataTypes.STRING,
 		}
-	});
+	})
 
-	return User;
+	return model
 }

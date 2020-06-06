@@ -9,7 +9,10 @@ const sequelize = new Sequelize({
 
 const db = {
 	__modelNames: [
-		'User'
+		'User',
+		'Category',
+		'MicroChat',
+		'Message'
 	]
 }
 

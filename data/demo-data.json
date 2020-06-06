@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "abc1",
+      "id": "e17742d1-3e69-4c4c-95d4-4d982100027c",
       "first_name": "Ivan",
       "last_name": "Ivanov",
       "login": "ivan",
@@ -9,12 +9,42 @@
       "token": "ivan-qwe"
     },
     {
-      "id": "abc2",
+      "id": "14a7a2b7-9508-4359-9bc2-c58a8dc6870b",
       "first_name": "Petr",
       "last_name": "Petrov",
       "login": "petr",
       "password": "asd",
       "token": "petr-asd"
+    }
+  ],
+  "categories": [
+    {
+      "id": "291e3130-014d-4d43-8362-a463bc582f1a",
+      "name": "Курилка"
+    }
+  ],
+  "microchats": [
+    {
+      "id": "64591f5c-f354-464f-aea0-308450b85bce",
+      "parent_id": null,
+      "creator_id": "14a7a2b7-9508-4359-9bc2-c58a8dc6870b",
+      "category_id": "291e3130-014d-4d43-8362-a463bc582f1a",
+      "title": "Котлин - хорош",
+      "description": "Раньше я писал на джаве, но потом появился он",
+      "timestamp": "11-02-11 16:47:35,985",
+      "message_count": 10,
+      "microchats_count": 2,
+      "people_count": 17,
+      "hot": 10.3
+    }
+  ],
+  "messages": [
+    {
+      "id": "36162ad3-6f0c-4714-b6eb-ef904e7d506d",
+      "microchat_id": "64591f5c-f354-464f-aea0-308450b85bce",
+      "user_id": "e17742d1-3e69-4c4c-95d4-4d982100027c",
+      "reference_id": null,
+      "text": "Тестовое сообщение"
     }
   ]
 }

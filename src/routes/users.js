@@ -1,43 +1,44 @@
-const Router = require('koa-router');
-const users = new Router();
+import Router from 'koa-router'
 
-const models = require('../models');
+import db from '../models'
+
+const users = new Router()
 
 users.get('/', async (ctx, next) => {
-	const allUsers = await models.user.findAll();
+	const users = await db.user.findAll()
 
-	ctx.body = allUsers;
-	await next();
-});
+	ctx.body = users
+	await next()
+})
 
 users.get('/:id', async (ctx, next) => {
-	const user = await models.user.findById(ctx.params.id);
+	const user = await db.user.findById(ctx.params.id)
 
-	ctx.body = user;
-	await next();
-});
+	ctx.body = user
+	await next()
+})
 
 users.post('/', async (ctx, next) => {
-	const user = await models.user.create(ctx.request.body);
+	const user = await db.user.create(ctx.request.body)
 
-	ctx.body = user;
-	await next();
-});
+	ctx.body = user
+	await next()
+})
 
 users.patch('/:id', async (ctx, next) => {
-	const user = await models.user.findById(ctx.params.id);
-	const updatedUser = await user.update(ctx.request.body);
+	const user = await db.user.findById(ctx.params.id)
+	const updatedUser = await user.update(ctx.request.body)
 
-	ctx.body = updatedUser;
-	await next();
-});
+	ctx.body = updatedUser
+	await next()
+})
 
 users.delete('/:id', async (ctx, next) => {
-	const user = await models.user.findById(ctx.params.id);
-	const deleted = await user.destroy();
+	const user = await db.user.findById(ctx.params.id)
+	const deleted = await user.destroy()
 
-	ctx.body = deleted;
-	await next();
-});
+	ctx.body = deleted
+	await next()
+})
 
 export default users
