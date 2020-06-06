@@ -1,11 +1,14 @@
 import Router from 'koa-router'
+import { v4 as uuidv4 } from 'uuid'
 
 import db from '../models'
+import { createWhereSequelize } from "./utils";
 
 const messages = new Router()
 
 messages.get('/', async (ctx, next) => {
-	const messages = await db.message.findAll()
+	const where = createWhereSequelize(ctx.request.query, ['microchat_id', 'user_id'])
+	const messages = await db.user.findAll(where)
 
 	ctx.body = {
 		data: messages
@@ -23,7 +26,22 @@ messages.get('/:id', async (ctx, next) => {
 })
 
 messages.post('/', async (ctx, next) => {
-	const message = await db.message.create(ctx.request.body)
+	if (!ctx.state.user) {
+		ctx.body = {
+			error: {
+				code: 401,
+				message: 'Can\'t authorize'
+			}
+		}
+		await next()
+		return
+	}
+
+	const message = await db.message.create({
+		...ctx.request.body,
+		id: uuidv4(),
+		user_id: ctx.state.user.id
+	})
 
 	ctx.body = {
 		data: message

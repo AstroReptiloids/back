@@ -1,3 +1,5 @@
+import db from '../models'
+
 export const createWhereArray = (args, fields) => {
   const where = Object.keys(args)
     .filter(key => fields.includes(key))
@@ -6,4 +8,14 @@ export const createWhereArray = (args, fields) => {
     return null
   }
   return where
+}
+
+export const createWhereSequelize = (args, fields) => {
+  const where = createWhereArray(args, fields)
+  if (where) {
+    return {
+      where: db.Sequelize.and(...where)
+    }
+  }
+  return {}
 }

@@ -1,17 +1,37 @@
 import Router from 'koa-router'
 
 import db from '../models'
-import { createWhereArray } from './utils'
+import { createWhereSequelize } from './utils'
 
 const auth = new Router()
 
-auth.get('/login', async (ctx, next) => {
-	const where = createWhereArray(ctx.request.query, ['owner_id', 'feeder_id'])
-	const user = await db.user.findOne({ where: db.Sequelize.and(...where) })
+auth.post('/login', async (ctx, next) => {
+	if (!ctx.request.body.login || !ctx.request.body.password) {
+		ctx.body = {
+			error: {
+				code: 400,
+				message: 'Can\'t find login or password'
+			}
+		}
+		await next()
+		return
+	}
 
-	ctx.body = {
-		data: {
-			token: user.token
+	const where = createWhereSequelize(ctx.request.body, ['login'])
+	const user = await db.user.findOne(where)
+
+	if (user && user.password === ctx.request.body.password) {
+		ctx.body = {
+			data: {
+				token: user.token
+			}
+		}
+	} else {
+		ctx.body = {
+			error: {
+				code: 401,
+				message: 'Can\'t authorize'
+			}
 		}
 	}
 	await next()

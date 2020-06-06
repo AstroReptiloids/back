@@ -1,6 +1,7 @@
 import Router from 'koa-router'
 
 import db from '../models'
+import {v4 as uuidv4} from "uuid";
 
 const microchats = new Router()
 
@@ -23,7 +24,22 @@ microchats.get('/:id', async (ctx, next) => {
 })
 
 microchats.post('/', async (ctx, next) => {
-	const microchat = await db.mesmicrochatsage.create(ctx.request.body)
+	if (!ctx.state.user) {
+		ctx.body = {
+			error: {
+				code: 401,
+				message: 'Can\'t authorize'
+			}
+		}
+		await next()
+		return
+	}
+
+	const microchat = await db.microchat.create({
+		...ctx.request.body,
+		id: uuidv4(),
+		creator_id: ctx.state.user.id
+	})
 
 	ctx.body = {
 		data: microchat
