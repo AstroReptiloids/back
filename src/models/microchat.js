@@ -7,8 +7,17 @@ export default (sequelize, DataTypes) => {
 		title: {
 			type: DataTypes.STRING,
 		},
-		description: {
+		message_count: {
 			type: DataTypes.TEXT,
+		},
+		microchats_count: {
+			type: DataTypes.INTEGER,
+		},
+		people_count: {
+			type: DataTypes.INTEGER,
+		},
+		hot: {
+			type: DataTypes.INTEGER,
 		}
 	})
 

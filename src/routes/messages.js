@@ -7,11 +7,31 @@ import { createWhereSequelize } from "./utils";
 const messages = new Router()
 
 messages.get('/', async (ctx, next) => {
+	const query = ctx.request.query
 	const where = createWhereSequelize(ctx.request.query, ['microchat_id', 'user_id'])
-	const messages = await db.user.findAll(where)
+	const messages = await db.message.findAll(where)
+
+	let microchat = null
+	if (query.microchat_id) {
+		microchat = await db.microchat.findByPk(query.microchat_id)
+	}
+
+	const users = {}
+	await Promise.all(messages.map(async m => {
+		if (users[m.user_id]) {
+			return
+		}
+		users[m.user_id] = await db.user.findByPk(m.user_id)
+	}))
 
 	ctx.body = {
-		data: messages
+		data: {
+			messages: messages.map(m => ({
+				...m.toJSON(),
+				user: users[m.user_id]
+			})),
+			microchat
+		}
 	}
 	await next()
 })
