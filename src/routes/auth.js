@@ -23,6 +23,7 @@ auth.post('/login', async (ctx, next) => {
 	if (user && user.password === ctx.request.body.password) {
 		ctx.body = {
 			data: {
+				user_id: user.id,
 				token: user.token
 			}
 		}

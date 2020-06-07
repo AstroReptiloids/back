@@ -88,7 +88,7 @@ messages.get('/', async (ctx, next) => {
 		data: {
 			messages: messages.map(m => ({
 				...m.toJSON(),
-				user: users[m.id],
+				user: users[m.user_id],
 				is_parent: !!microchatsParents[m.id],
 				message_count: messageCounts[m.id],
 				microchats_count: microchatsCounts[m.id],
