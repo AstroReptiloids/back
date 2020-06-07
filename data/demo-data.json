@@ -3,7 +3,7 @@
     {
       "id": "e17742d1-3e69-4c4c-95d4-4d982100027c",
       "first_name": "Ivan",
-      "last_name": "Ivanov",
+      "last_name": "Kosmonaftov",
       "login": "ivan",
       "password": "qwe",
       "token": "ivan-qwe"
@@ -11,10 +11,26 @@
     {
       "id": "14a7a2b7-9508-4359-9bc2-c58a8dc6870b",
       "first_name": "Petr",
-      "last_name": "Petrov",
+      "last_name": "Land",
       "login": "petr",
       "password": "asd",
       "token": "petr-asd"
+    },
+    {
+      "id": "56f72ec7-d947-4af4-b114-3fa995c87ff0",
+      "first_name": "Andrey",
+      "last_name": "Orekhov",
+      "login": "and",
+      "password": "asd",
+      "token": "and-asd"
+    },
+    {
+      "id": "68928eb0-54da-4389-a96e-aebcc0a8cee2",
+      "first_name": "Stepan",
+      "last_name": "Kurov",
+      "login": "ste",
+      "password": "asd",
+      "token": "ste-asd"
     }
   ],
   "categories": [
@@ -43,11 +59,11 @@
       "name": "Партнеры"
     },
     {
-      "id": "65a69740-ddab-4d26-b1dd-81c28fd3d877",
+      "id": "51266093-8fb3-4c46-9f40-bfcaaab602a5",
       "name": "Доклады"
     },
     {
-      "id": "51266093-8fb3-4c46-9f40-bfcaaab602a5",
+      "id": "65a69740-ddab-4d26-b1dd-81c28fd3d877",
       "name": "Стартапы"
     },
     {
@@ -64,14 +80,92 @@
       "id": "64591f5c-f354-464f-aea0-308450b85bce",
       "parent_id": null,
       "creator_id": "14a7a2b7-9508-4359-9bc2-c58a8dc6870b",
-      "category_id": "291e3130-014d-4d43-8362-a463bc582f1a",
+      "category_id": "65a69740-ddab-4d26-b1dd-81c28fd3d877",
       "title": "Котлин - хорош",
       "description": "Раньше я писал на джаве, но потом появился он",
       "timestamp": "11-02-11 16:47:35,985",
+      "message_count": 2,
+      "microchats_count": 2,
+      "people_count": 2,
+      "hot": 5
+    },
+    {
+      "id": "51266093-8fb3-4c46-9f40-bfcaaab602a5",
+      "parent_id": null,
+      "creator_id": "e17742d1-3e69-4c4c-95d4-4d982100027c",
+      "category_id": "65a69740-ddab-4d26-b1dd-81c28fd3d877",
+      "title": "Искусственный интеллект",
+      "description": "Обсуждаем тренды в ИИ",
+      "timestamp": "11-02-11 16:47:35,985",
       "message_count": 10,
       "microchats_count": 2,
-      "people_count": 17,
-      "hot": 10
+      "people_count": 4,
+      "hot": 15
+    },
+    {
+      "id": "a4fa6c39-26fe-41c3-8a7b-4e87a4971065",
+      "parent_id": null,
+      "creator_id": "e17742d1-3e69-4c4c-95d4-4d982100027c",
+      "category_id": "65a69740-ddab-4d26-b1dd-81c28fd3d877",
+      "title": "Питч сессия",
+      "description": "Питч сессия стартапов от организаторов",
+      "timestamp": "11-02-11 16:47:35,985",
+      "message_count": 10,
+      "microchats_count": 2,
+      "people_count": 2,
+      "hot": 8
+    },
+    {
+      "id": "edefa3eb-d99e-478f-922e-7b58dac23b54",
+      "parent_id": null,
+      "creator_id": "e17742d1-3e69-4c4c-95d4-4d982100027c",
+      "category_id": "65a69740-ddab-4d26-b1dd-81c28fd3d877",
+      "title": "Биотех стартап ищет инвестора",
+      "description": "Ускоряем фотосинтез с генетическими алгоритмами и блокчейном",
+      "timestamp": "11-02-11 16:47:35,985",
+      "message_count": 4,
+      "microchats_count": 2,
+      "people_count": 3,
+      "hot": 9
+    },
+    {
+      "id": "09c46755-a0e1-443c-a320-ced03cb5666e",
+      "parent_id": null,
+      "creator_id": "e17742d1-3e69-4c4c-95d4-4d982100027c",
+      "category_id": "65a69740-ddab-4d26-b1dd-81c28fd3d877",
+      "title": "Тренды в IoT/IIoT",
+      "description": "От компании IBM",
+      "timestamp": "11-02-11 16:47:35,985",
+      "message_count": 5,
+      "microchats_count": 2,
+      "people_count": 4,
+      "hot": 5
+    },
+    {
+      "id": "f61d8eda-f740-44b5-ab3c-161863324ad0",
+      "parent_id": null,
+      "creator_id": "e17742d1-3e69-4c4c-95d4-4d982100027c",
+      "category_id": "65a69740-ddab-4d26-b1dd-81c28fd3d877",
+      "title": "Ищем трекера",
+      "description": "Стартап в сфере медтеха ищет трекера",
+      "timestamp": "11-02-11 16:47:35,985",
+      "message_count": 10,
+      "microchats_count": 2,
+      "people_count": 1,
+      "hot": 6
+    },
+    {
+      "id": "cd685366-9c2f-4e9d-ae0e-16731283129d",
+      "parent_id": "a9b5e58f-1155-478b-b761-486d37a266ce",
+      "creator_id": "56f72ec7-d947-4af4-b114-3fa995c87ff0",
+      "category_id": null,
+      "title": "Проект Supcall",
+      "description": "Автоматическое назначение звонков оператора чат-ботом",
+      "timestamp": "11-02-11 16:47:35,985",
+      "message_count": 10,
+      "microchats_count": 2,
+      "people_count": 1,
+      "hot": 1
     }
   ],
   "messages": [
@@ -81,6 +175,55 @@
       "user_id": "e17742d1-3e69-4c4c-95d4-4d982100027c",
       "reference_id": null,
       "text": "Тестовое сообщение"
+    },
+    {
+      "id": "f89897a6-f2e1-4d14-9810-0bbe7aea2578",
+      "microchat_id": "51266093-8fb3-4c46-9f40-bfcaaab602a5",
+      "user_id": "e17742d1-3e69-4c4c-95d4-4d982100027c",
+      "reference_id": null,
+      "text": "Трек с ИИ на этом ивенте просто огонь"
+    },
+    {
+      "id": "fb77d055-0b0f-4f38-88ab-00fe4d8b45ad",
+      "microchat_id": "51266093-8fb3-4c46-9f40-bfcaaab602a5",
+      "user_id": "14a7a2b7-9508-4359-9bc2-c58a8dc6870b",
+      "reference_id": null,
+      "text": "Ага, крутое выступление про чат-ботов, интересно что ещё есть в этой теме"
+    },
+    {
+      "id": "ccd16f24-860a-43b0-887a-0da795f68d33",
+      "microchat_id": "51266093-8fb3-4c46-9f40-bfcaaab602a5",
+      "user_id": "e17742d1-3e69-4c4c-95d4-4d982100027c",
+      "reference_id": null,
+      "text": "Хммм, где-то тут был стартап для назначения звонков оператора чат-ботом"
+    },
+    {
+      "id": "52293ab0-d23c-4f8f-93e0-99067bb2e3d4",
+      "microchat_id": "51266093-8fb3-4c46-9f40-bfcaaab602a5",
+      "user_id": "14a7a2b7-9508-4359-9bc2-c58a8dc6870b",
+      "reference_id": null,
+      "text": "О, прикольно"
+    },
+    {
+      "id": "a9b5e58f-1155-478b-b761-486d37a266ce",
+      "microchat_id": "51266093-8fb3-4c46-9f40-bfcaaab602a5",
+      "user_id": "56f72ec7-d947-4af4-b114-3fa995c87ff0",
+      "reference_id": null,
+      "text": "Стартап тут! Что конкретно интересует?"
+    },
+    {
+      "id": "ac4dc613-1180-4a3a-aaf8-f04e425630e5",
+      "microchat_id": "51266093-8fb3-4c46-9f40-bfcaaab602a5",
+      "user_id": "14a7a2b7-9508-4359-9bc2-c58a8dc6870b",
+      "reference_id": null,
+      "text": "Давайте в другую тему уйдём?"
+    },
+    {
+      "id": "f9643f2b-84b6-4d2d-9527-dc028b2d3953",
+      "microchat_id": "cd685366-9c2f-4e9d-ae0e-16731283129d",
+      "user_id": "56f72ec7-d947-4af4-b114-3fa995c87ff0",
+      "reference_id": null,
+      "text": "Здесь можете задать вопросы по проекту"
     }
   ]
 }
