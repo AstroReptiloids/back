@@ -2,6 +2,7 @@ import Router from 'koa-router'
 import { v4 as uuidv4 } from 'uuid'
 
 import db from '../models'
+import { sessions } from "../subscription"
 import { createWhereSequelize } from "./utils";
 
 const messages = new Router()
@@ -70,6 +71,13 @@ messages.post('/', async (ctx, next) => {
 	ctx.body = {
 		data: message
 	}
+
+	Object.keys(sessions).forEach(session => {
+		sessions[session].send(JSON.stringify({
+			status: 'ok',
+			message
+		}))
+	})
 	await next()
 })
 
