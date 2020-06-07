@@ -14,6 +14,10 @@ db.sequelize.sync().then(async () => {
   const microchats = await db.microchat.bulkCreate(demoData.microchats)
   assert(microchats.length === demoData.microchats.length)
 
-  const messages = await db.message.bulkCreate(demoData.messages)
-  assert(messages.length === demoData.messages.length)
+  for (let i = 0; i < demoData.messages.length; i += 1) {
+    await db.message.create(demoData.messages[i])
+  }
+  // await Promise.all(demoData.messages.map(m => db.message.create(m)))
+  // const messages = await db.message.bulkCreate(demoData.messages)
+  // assert(messages.length === demoData.messages.length)
 })

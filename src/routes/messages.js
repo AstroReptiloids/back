@@ -24,6 +24,61 @@ messages.get('/', async (ctx, next) => {
 		}
 		const user = await db.user.findByPk(m.user_id)
 		users[m.user_id] = {
+			id: user.id,
+			first_name: user.first_name,
+			last_name: user.last_name
+		}
+	}))
+
+	const microchats = await db.microchat.findAll()
+	const microchatsParents = {}
+	const messageCounts = {}
+	const microchatsCounts = {}
+	const peopleCounts = {}
+	const hots = {}
+	microchats.forEach(m => {
+		if (!m.parent_id) {
+			return
+		}
+
+		if (microchatsParents[m.parent_id] && microchatsParents[m.parent_id].length) {
+			microchatsParents[m.parent_id].push(m)
+		} else {
+			microchatsParents[m.parent_id] = [m]
+		}
+
+		if (messageCounts[m.parent_id]) {
+			messageCounts[m.parent_id] += m.message_count
+		} else {
+			messageCounts[m.parent_id] = m.message_count
+		}
+
+		if (microchatsCounts[m.parent_id]) {
+			microchatsCounts[m.parent_id] += m.microchats_count
+		} else {
+			microchatsCounts[m.parent_id] = m.microchats_count
+		}
+
+		if (peopleCounts[m.parent_id]) {
+			peopleCounts[m.parent_id] += m.people_count
+		} else {
+			peopleCounts[m.parent_id] = m.people_count
+		}
+
+		if (hots[m.parent_id]) {
+			hots[m.parent_id] += m.hot
+		} else {
+			hots[m.parent_id] = m.hot
+		}
+	})
+
+	await Promise.all(messages.map(async m => {
+		if (users[m.user_id]) {
+			return
+		}
+		const user = await db.user.findByPk(m.user_id)
+		users[m.user_id] = {
+			id: user.id,
 			first_name: user.first_name,
 			last_name: user.last_name
 		}
@@ -33,7 +88,12 @@ messages.get('/', async (ctx, next) => {
 		data: {
 			messages: messages.map(m => ({
 				...m.toJSON(),
-				user: users[m.user_id]
+				user: users[m.id],
+				is_parent: !!microchatsParents[m.id],
+				message_count: messageCounts[m.id],
+				microchats_count: microchatsCounts[m.id],
+				people_count: peopleCounts[m.id],
+				hot: hots[m.id]
 			})),
 			microchat
 		}
@@ -42,7 +102,7 @@ messages.get('/', async (ctx, next) => {
 })
 
 messages.get('/:id', async (ctx, next) => {
-	const message = await db.message.findById(ctx.params.id)
+	const message = await db.message.findByPk(ctx.params.id)
 
 	ctx.body = {
 		data: message
@@ -82,7 +142,7 @@ messages.post('/', async (ctx, next) => {
 })
 
 messages.patch('/:id', async (ctx, next) => {
-	const message = await db.message.findById(ctx.params.id)
+	const message = await db.message.findByPk(ctx.params.id)
 	const updatedMessage = await message.update(ctx.request.body)
 
 	ctx.body = {
@@ -92,7 +152,7 @@ messages.patch('/:id', async (ctx, next) => {
 })
 
 messages.delete('/:id', async (ctx, next) => {
-	const message = await db.message.findById(ctx.params.id)
+	const message = await db.message.findByPk(ctx.params.id)
 	const deletedMessage = await message.destroy()
 
 	ctx.body = {

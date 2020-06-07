@@ -28,6 +28,7 @@ microchats.get('/', async (ctx, next) => {
 		}
 		const creator = await db.user.findByPk(m.creator_id)
 		creators[m.creator_id] = {
+			id: creator.id,
 			first_name: creator.first_name,
 			last_name: creator.last_name
 		}
@@ -47,7 +48,7 @@ microchats.get('/', async (ctx, next) => {
 })
 
 microchats.get('/:id', async (ctx, next) => {
-	const microchat = await db.microchat.findById(ctx.params.id)
+	const microchat = await db.microchat.findByPk(ctx.params.id)
 
 	ctx.body = {
 		data: microchat
@@ -84,7 +85,7 @@ microchats.post('/', async (ctx, next) => {
 })
 
 microchats.patch('/:id', async (ctx, next) => {
-	const microchat = await db.microchat.findById(ctx.params.id)
+	const microchat = await db.microchat.findByPk(ctx.params.id)
 	const updatedMicroChat = await microchat.update(ctx.request.body)
 
 	ctx.body = {
@@ -94,7 +95,7 @@ microchats.patch('/:id', async (ctx, next) => {
 })
 
 microchats.delete('/:id', async (ctx, next) => {
-	const microchat = await db.microchat.findById(ctx.params.id)
+	const microchat = await db.microchat.findByPk(ctx.params.id)
 	const deletedMicroChat = await microchat.destroy()
 
 	ctx.body = {

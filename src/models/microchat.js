@@ -18,14 +18,13 @@ export default (sequelize, DataTypes) => {
 		},
 		hot: {
 			type: DataTypes.INTEGER,
+		},
+		parent_id: {
+			type: DataTypes.STRING,
 		}
 	})
 
 	model.associate = models => {
-		model.belongsTo(models.message, {
-			foreignKey: 'parent_id',
-			targetKey: 'id'
-		})
 		model.belongsTo(models.user, {
 			foreignKey: 'creator_id',
 			targetKey: 'id'
