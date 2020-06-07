@@ -14,7 +14,7 @@ categories.get('/', async (ctx, next) => {
 })
 
 categories.get('/:id', async (ctx, next) => {
-	const category = await db.category.findById(ctx.params.id)
+	const category = await db.category.findByPk(ctx.params.id)
 
 	ctx.body = {
 		data: category

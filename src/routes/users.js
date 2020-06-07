@@ -18,7 +18,7 @@ users.get('/', async (ctx, next) => {
 })
 
 users.get('/:id', async (ctx, next) => {
-	const user = await db.user.findById(ctx.params.id)
+	const user = await db.user.findByPk(ctx.params.id)
 
 	ctx.body = {
 		data: {
@@ -40,7 +40,7 @@ users.post('/', async (ctx, next) => {
 })
 
 users.patch('/:id', async (ctx, next) => {
-	const user = await db.user.findById(ctx.params.id)
+	const user = await db.user.findByPk(ctx.params.id)
 	const updatedUser = await user.update(ctx.request.body)
 
 	ctx.body = {
@@ -50,7 +50,7 @@ users.patch('/:id', async (ctx, next) => {
 })
 
 users.delete('/:id', async (ctx, next) => {
-	const user = await db.user.findById(ctx.params.id)
+	const user = await db.user.findByPk(ctx.params.id)
 	const deleted = await user.destroy()
 
 	ctx.body = {
