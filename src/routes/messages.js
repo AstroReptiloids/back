@@ -26,7 +26,8 @@ messages.get('/', async (ctx, next) => {
 		users[m.user_id] = {
 			id: user.id,
 			first_name: user.first_name,
-			last_name: user.last_name
+			last_name: user.last_name,
+			createdAt: user.createdAt
 		}
 	}))
 
@@ -80,7 +81,8 @@ messages.get('/', async (ctx, next) => {
 		users[m.user_id] = {
 			id: user.id,
 			first_name: user.first_name,
-			last_name: user.last_name
+			last_name: user.last_name,
+			createdAt: user.createdAt
 		}
 	}))
 
@@ -132,12 +134,21 @@ messages.post('/', async (ctx, next) => {
 		data: message
 	}
 
+	const messageUser = await db.user.findByPk(message.user_id)
+
 	Object.keys(sessions).forEach(session => {
 		sessions[session].send(JSON.stringify({
 			status: 'ok',
-			message
+			message,
+			user: {
+				id: messageUser.id,
+				first_name: messageUser.first_name,
+				last_name: messageUser.last_name,
+				createdAt: messageUser.createdAt
+			}
 		}))
 	})
+
 	await next()
 })
 

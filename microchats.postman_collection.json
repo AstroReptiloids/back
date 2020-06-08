@@ -11,14 +11,31 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/users",
+					"raw": "http://{{base_url}}/users",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{base_url}}"
 					],
-					"port": "3000",
 					"path": [
 						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/categories",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"categories"
 					]
 				}
 			},
@@ -30,14 +47,29 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/messages",
+					"raw": "http://{{base_url}}/messages?microchat_id=cd685366-9c2f-4e9d-ae0e-16731283129d",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{base_url}}"
 					],
-					"port": "3000",
 					"path": [
 						"messages"
+					],
+					"query": [
+						{
+							"key": "microchat_id",
+							"value": "51266093-8fb3-4c46-9f40-bfcaaab602a5",
+							"disabled": true
+						},
+						{
+							"key": "user_id",
+							"value": "e17742d1-3e69-4c4c-95d4-4d982100027c",
+							"disabled": true
+						},
+						{
+							"key": "microchat_id",
+							"value": "cd685366-9c2f-4e9d-ae0e-16731283129d"
+						}
 					]
 				}
 			},
@@ -56,33 +88,29 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:3000/microchats",
+					"raw": "http://{{base_url}}/microchats?parent_id=a9b5e58f-1155-478b-b761-486d37a266ce",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{base_url}}"
 					],
-					"port": "3000",
 					"path": [
 						"microchats"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "categories",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/categories",
-					"protocol": "http",
-					"host": [
-						"localhost"
 					],
-					"port": "3000",
-					"path": [
-						"categories"
+					"query": [
+						{
+							"key": "parent_id",
+							"value": "a9b5e58f-1155-478b-b761-486d37a266ce"
+						},
+						{
+							"key": "creator_id",
+							"value": "e17742d1-3e69-4c4c-95d4-4d982100027c",
+							"disabled": true
+						},
+						{
+							"key": "category_id",
+							"value": "65a69740-ddab-4d26-b1dd-81c28fd3d877",
+							"disabled": true
+						}
 					]
 				}
 			},
@@ -109,27 +137,14 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/auth/login",
+					"raw": "http://{{base_url}}/auth/login",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{base_url}}"
 					],
-					"port": "3000",
 					"path": [
 						"auth",
 						"login"
-					],
-					"query": [
-						{
-							"key": "login",
-							"value": "ivan",
-							"disabled": true
-						},
-						{
-							"key": "password",
-							"value": "qwe",
-							"disabled": true
-						}
 					]
 				}
 			},
@@ -162,12 +177,11 @@
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/messages",
+					"raw": "http://{{base_url}}/messages",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{base_url}}"
 					],
-					"port": "3000",
 					"path": [
 						"messages"
 					]
@@ -177,6 +191,18 @@
 		},
 		{
 			"name": "microchats",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "7d447d51-e68a-4680-8794-f9999fcebef1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -202,23 +228,72 @@
 						{
 							"key": "parent_id",
 							"value": "",
-							"type": "text"
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:3000/microchats",
+					"raw": "http://{{base_url}}/microchats",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{base_url}}"
 					],
-					"port": "3000",
 					"path": [
 						"microchats"
 					]
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "microchat",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/microchats/cd685366-9c2f-4e9d-ae0e-16731283129d",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"microchats",
+						"cd685366-9c2f-4e9d-ae0e-16731283129d"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "5d3cb120-c8b4-4f07-80ef-cab74ed11aa6",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "c5093122-a897-45cb-a622-b6f0d6899bee",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "7ac089ac-89c7-4ae0-9f61-c29332fbf457",
+			"key": "base_url",
+			"value": "localhost:3000",
+			"type": "string"
 		}
 	],
 	"protocolProfileBehavior": {}

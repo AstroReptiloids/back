@@ -90,6 +90,32 @@
       "hot": 5
     },
     {
+      "id": "1ba8dd3b-4a6d-4e41-9bec-e04ba0ef7c38",
+      "parent_id": null,
+      "creator_id": "14a7a2b7-9508-4359-9bc2-c58a8dc6870b",
+      "category_id": "65a69740-ddab-4d26-b1dd-81c28fd3d877",
+      "title": "Front end dev",
+      "description": "Сидим и болтаем на фронте",
+      "timestamp": "11-02-11 16:47:35,985",
+      "message_count": 2,
+      "microchats_count": 2,
+      "people_count": 2,
+      "hot": 5
+    },
+    {
+      "id": "f1c033a5-3931-458b-9853-8c1e3d25e5a8",
+      "parent_id": null,
+      "creator_id": "14a7a2b7-9508-4359-9bc2-c58a8dc6870b",
+      "category_id": "65a69740-ddab-4d26-b1dd-81c28fd3d877",
+      "title": "DevOps guys",
+      "description": "KISS, CI/CD, IaC",
+      "timestamp": "11-02-11 16:47:35,985",
+      "message_count": 2,
+      "microchats_count": 2,
+      "people_count": 2,
+      "hot": 5
+    },
+    {
       "id": "51266093-8fb3-4c46-9f40-bfcaaab602a5",
       "parent_id": null,
       "creator_id": "e17742d1-3e69-4c4c-95d4-4d982100027c",
